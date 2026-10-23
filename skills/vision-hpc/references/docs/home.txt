@@ -1,0 +1,54 @@
+Source: https://docs.vision.tamus.edu/
+Retrieved: 2026-10-23
+Format: browser-extracted text; image contents are not included.
+
+【0†Skip to main content】
+
+  * 【1†Welcome to VISION Documentation】
+  * 【2†Architecture of the VISION supercomputer】
+  * 【3†Onboarding Instructions】
+  * 【4†Running Jobs】
+  * 【5†Using Globus】
+  * 【6†Hardware Specifications】
+  * 【7†Using Containers】
+  * 【8†Maintenance】
+  * 【9†IT Pros】
+
+  * 【10†Support】
+
+[Button: On this page]
+# Welcome to VISION Documentation
+
+VISION is a Texas A&M University System (TAMUS) GPU-accelerated computing platform supporting large-scale research, data-intensive workflows, and AI/ML applications across all TAMUS institutions.
+## Current Status: General Availability【11†​】
+
+  * Access requires completing an application and approval by TAMUS governance
+  * Users must run GPU-enabled workloads and provide feedback
+  * Features and tools are evolving
+
+【12†Learn more about applying to use VISION(opens in new window)†vision.tamus.edu】
+## How This Site Is Maintained【13†​】
+
+  * Actively updated by the VISION team and stakeholders
+  * This site is the official reference for VISION guidance
+  * User feedback is welcome to guide improvements
+## Getting Started【14†​】
+
+If you are exploring VISION or participating in using the system:
+
+  * 【3†Onboarding Instructions】
+  * 【15†Hardware Specifications】
+  * Request Support (help@vision.tamus.edu)
+
+【2†Next Architecture of the VISION supercomputer】
+
+  * 【11†Current Status: General Availability】
+  * 【13†How This Site Is Maintained】
+  * 【14†Getting Started】
+
+Docs
+
+  * 【1†TAMUS VISION Supercomputer Documentation】
+  * 【10†Support】
+  * Feedback (feedback@vision.tamus.edu)
+Copyright © 2026 【16†Texas A&M University System†www.tamus.edu】

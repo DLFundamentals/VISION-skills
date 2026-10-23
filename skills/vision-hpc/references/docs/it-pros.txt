@@ -1,0 +1,33 @@
+Source: https://docs.vision.tamus.edu/it-pros/
+Retrieved: 2026-10-23
+Format: browser-extracted text; image contents are not included.
+
+【0†Skip to main content】
+
+  * 【1†Welcome to VISION Documentation】
+  * 【2†Architecture of the VISION supercomputer】
+  * 【3†Onboarding Instructions】
+  * 【4†Running Jobs】
+  * 【5†Using Globus】
+  * 【6†Hardware Specifications】
+  * 【7†Using Containers】
+  * 【8†Maintenance】
+  * 【9†IT Pros】
+
+    * 【10†Prerequisites for Access to VISION】
+  * 【11†Support】
+# IT Pros
+
+This section contains information for IT Pros who are supporting their institutions use of VISION.
+
+【12†Access Prerequisites】
+
+【8†Previous Maintenance】【10†Next Prerequisites for Access to VISION】
+
+Docs
+
+  * 【1†TAMUS VISION Supercomputer Documentation】
+  * 【11†Support】
+  * Feedback (feedback@vision.tamus.edu)
+
+Copyright © 2026 【13†Texas A&M University System†www.tamus.edu】

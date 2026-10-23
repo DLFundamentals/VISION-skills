@@ -1,0 +1,129 @@
+Source: https://docs.vision.tamus.edu/specifications/
+Retrieved: 2026-10-23
+Format: browser-extracted text; image contents are not included.
+
+【0†Skip to main content】
+
+  * 【1†Welcome to VISION Documentation】
+  * 【2†Architecture of the VISION supercomputer】
+  * 【3†Onboarding Instructions】
+  * 【4†Running Jobs】
+  * 【5†Using Globus】
+  * 【6†Hardware Specifications】
+  * 【7†Using Containers】
+  * 【8†Maintenance】
+  * 【9†IT Pros】
+
+  * 【10†Support】
+
+[Button: On this page]
+
+# Hardware Specifications
+
+## VISION SUPERPOD【11†​】
+
+Metric  | Value
+--- | ---
+Peak DP FLOPS  | 【12†34.82 petaFLOPs(opens in new window)†top500.org】
+
+* * *
+## Login Resources【13†​】
+
+Metric  | Value
+--- | ---
+Nodes  | 2
+Total Cores  | 96
+Cores/Node  | 48
+
+### Node Configuration【14†​】
+
+  * 384 GB RAM
+  * 2× Intel Xeon Gold 5418Y (24 cores each)
+
+* * *
+
+## Compute Resources【15†​】
+
+Metric  | Value
+--- | ---
+Nodes  | 90 NVIDIA DGX available to schedule (95 total)
+Total Cores  | 10,080 available to schedule (10,640 total)
+Cores/Node  | 112
+Total GPUs  | 720 available to schedule (760 total)
+GPUs/Node  | 8× NVIDIA H200 connected via internal NVLink
+### Node Configuration【16†​】
+
+  * 2 TB of DDR5 4400 MT/s RAM
+  * 2× Intel Xeon Platinum 8480C (56 cores each)
+  * Internal NVLink: 7.2 TB/s total bidirectional GPU-to-GPU bandwidth
+
+### Local Disk/Node【17†​】
+
+Mount  | Capacity
+--- | ---
+`/raid`  | 30 TB
+`/`  | 1.9 TB
+Total Usable  | 28 TB
+
+### GPU Specifications (H200)【18†​】
+
+Metric  | Value
+--- | ---
+GPU RAM  | 144 GB per GPU
+MIG Capability  | 7-way split per GPU
+Max MIG Instances  | 5,040 available to schedule
+
+* * *
+## Storage Resources【19†​】
+
+Metric  | Value
+--- | ---
+System  | DDN EXAScaler Storage
+Nodes  | 19 (16 usable × 500 TB)
+Total Capacity  | 8 PB fast scratch
+Throughput  | 2.4 TB/s per rack (4.8 TB/s total)
+
+* * *
+
+## Network Resources【20†​】
+
+### Ethernet Fabrics【21†​】
+
+  * Topology: Spine-leaf configuration
+  * Switches: 12 Cumulus Linux switches
+Fabric  | Speed
+--- | ---
+In-band  | 100G / 40G
+Out-of-band  | 100G / 1G
+### InfiniBand Fabrics【22†​】
+
+  * Switches: 54 Quantum InfiniBand switches
+Fabric  | Speed
+--- | ---
+Compute  | 400G
+Storage  | 400G
+### Node Connectivity【23†​】
+
+  * 2 Ethernet fabrics (out-of-band and in-band)
+  * 2 InfiniBand fabrics (compute and storage)
+
+【5†Previous Using Globus】【7†Next Using Containers】
+  * 【11†VISION SUPERPOD】
+  * 【13†Login Resources】
+    * 【14†Node Configuration】
+  * 【15†Compute Resources】
+    * 【16†Node Configuration】
+    * 【17†Local Disk/Node】
+    * 【18†GPU Specifications (H200)】
+  * 【19†Storage Resources】
+  * 【20†Network Resources】
+    * 【21†Ethernet Fabrics】
+    * 【22†InfiniBand Fabrics】
+    * 【23†Node Connectivity】
+
+Docs
+
+  * 【1†TAMUS VISION Supercomputer Documentation】
+  * 【10†Support】
+  * Feedback (feedback@vision.tamus.edu)
+Copyright © 2026 【24†Texas A&M University System†www.tamus.edu】

@@ -1,0 +1,293 @@
+Source: https://docs.vision.tamus.edu/slurm/
+Retrieved: 2026-10-23
+Format: browser-extracted text; image contents are not included.
+
+【0†Skip to main content】
+
+  * 【1†Welcome to VISION Documentation】
+  * 【2†Architecture of the VISION supercomputer】
+  * 【3†Onboarding Instructions】
+  * 【4†Running Jobs】
+  * 【5†Using Globus】
+  * 【6†Hardware Specifications】
+  * 【7†Using Containers】
+  * 【8†Maintenance】
+  * 【9†IT Pros】
+
+  * 【10†Support】
+
+[Button: On this page]
+# Running Jobs
+
+How to use Slurm to submit a job
+
+note
+
+Please note that the job submission procedure is evolving and the directions below may change over time. Please reach out if you run into any issues.
+
+## Slurm Configuration【11†​】
+
+## Version: v4 - enabled 2026-10-14【12†​】
+## Guiding principles【13†​】
+  * Iterative This will be versioned and improved over time
+  * Maximized Utilization We aim for maximum cluster utilization and high-impact outcomes, guided by the governance committee
+  * Minimal Friction We want to minimize wait times and avoid unnecessary barriers
+  * Feedback-Driven We know we won't get it right the first time—we need your input
+  * User Experience We want everyone to have a good experience, though we understand not everyone will agree with every configuration choice
+## Current configuration【14†​】
+
+### FairShare Scheduling【15†​】
+
+Scheduling priority is governed by your FairShare score, calculated by Slurm based on:
+
+  * QoS levels
+  * Resources requested
+  * Time requested
+  * Past utilization
+  * Decay factors
+### Ledger System【16†​】
+
+As part of our ongoing efforts to enable equitable access to VISION, we have implemented a ledger system. The ledger system tracks usage over time and adjusts the FairShare cap or maximum score based on historical usage proportionate to maximum system availability. The FairShare score will not fall below half of the base value. When a user is onboarded, their FairShare value is set to 1000. The ledger calculates usage from 2026-10-14 onwards.
+
+### Project Tiers【17†​】
+#### Tier One【18†​】
+
+  * Startup tier - grants access only to a dedicated `startup` QoS level
+  * Limited to a max of 40 GPU's across all running jobs
+  * Limited to 970 total GPU hours across all jobs. Once this limit is hit (or 6 months after project creation), your FairShare drops to 0 and you will be unable to submit any new jobs. If you want to continue, you will need to talk with the Allocation Committee to be moved to Tier Two.
+#### Tier Two【19†​】
+  * Eligibilty for Tier Two requires proven ability to scale to the 40 GPU max of Tier One
+  * Normal operating tier - grants access to currently defined QoS levels except `heroic` and `startup`
+  * Limited to a max of 240 GPU's per job
+  * No maximum limit on total GPU hours.
+  * All projects will be reviewed by the Allocation Committee every 6 months beginning from October 1, 2026. Review will lead to either the continuation of the project through the end date or reassigning the project to Tier One.
+#### Tier Three【20†​】
+  * Heroic job eligibility tier - grants access to currently defined QoS levels and upon approval, access to the `heroic` QoS
+  * Running a heroic job will impact your FairShare since you will consume a large number of GPU hours at once. This will have the effect of deprioritizing your future jobs for some period of time.
+  * Limited to a max of 720 GPU's per job
+  * All heroic jobs will be reviewed and approved by the Allocation Committee
+  * Eligibility will require proving the ability to actually scale beyond the 240 GPU max for Tier Two
+  * Heroic jobs will be run immediately after the maintenance window each month
+### Understanding how your FairShare value is calculated【21†​】
+We have developed a utility that will show you how your FairShare score is being calculated. Please run the command `my-fairshare` once logged into a VISION login node to get detailed information on how your score is calculated. See below for sample redacted output.
+
+    `$ my-fairshare --brief
+    ================================================================================
+     How your fair-share priority is computed
+     user <redacted-user>   project <redacted-project>   <date>
+    ================================================================================
+    You belong to 2 projects: <redacted-project-1> <redacted-project-2>
+    Showing <redacted-project-1>. Use -A <project> to see another.
+    Your FairShare factor is 0.450512.
+    It earns you 4505 of 10000 possible fair-share priority points.
+    You are ranked 132 of 293 users, where 293 is the highest priority
+    and 1 is the lowest.
+    Run without --brief to see the full derivation.
+    `
+note
+
+Run the script with no flags after it (i.e. `my-fairshare`) to see detailed output
+### QoS Recommendations【22†​】
+QoS  | QoS Description  | Default
+--- | --- | ---
+high  | Higher initial priority, faster FairShare decay  | No
+standard  | Balanced (recommended)  | Yes
+low  | Boosts FairShare by slowing decay  | No
+scavenger  | Lowest initial priority, greatest FairShare boost (slowest decay)  | No
+startup  | Enables access to 40 GPUs - users in Tier One only, same as standard priority  | No
+heroic  | Enables access to 720 GPUs - users in Tier Three only, same as standard FairShare decay, requires additional approval  | No
+### Key Limits【23†​】
+
+note
+
+The max resources was changed from 720 GPUs to 240 GPUs on 2026-07-24
+
+  * Max wall time: 48 hours (all QoS levels)
+  * Max resources
+    * Tier One: 40 GPUS (`startup` QoS level)
+    * Tier Two: 240 GPUs (`high`, `standard`, `low` and `scavenger` QoS levels)
+    * Tier Three: 720 GPUs (`high`, `standard`, `low` and `scavenger` and, if approved, `heroic` QoS levels)
+  * Time field: Required on all submissions
+  * Project/Account: Specify if you belong to multiple projects
+## Slurm Submission Flags【24†​】
+Specification  | Option  | Example  | Example-Purpose  | Required
+--- | --- | --- | --- | ---
+Wall Clock Limit  | --time=[hh:mm:ss]  | --time=05:00:00  | Set wall clock limit to 5 hours 00 min  | Yes
+Job Name  | --job-name=[SomeText]  | --job-name=myJob  | Set the job name to "myJob"  | No
+Quality of Service  | --qos=[QoS name]  | --qos=standard  | Choose the “standard” Qos - select from values in above table  | No
+Total nodes  | --nodes=[#]  | --nodes=1  | Request 1 node  | No
+Total Task Count  | --ntasks=[#]  | --ntasks=2  | Request 2 tasks total  | No
+CPUs per task ^{【25†1】}  | --cpus-per-task=[#]  | --cpus-per-task=4  | Request 4 CPUs per task  | No
+Total GPUs per node  | --gres=gpu:[#]  | --gres=gpu:4  | Request 4 GPUs per node  | No
+Total GPUs per task  | --gpus-per-task=[#]  | --gpus-per-task=2  | Request 2 GPUs per task  | No
+Total GPUs for job  | --gpus=[#]  | --gpus=10  | Request 10 GPUs across the job  | No
+Tasks per Node  | --ntasks-per-node=[#]  | --ntasks-per-node=48  | Request exactly (or max) of 48 tasks per node  | No
+Memory Per Node ^{【26†2】}  | --mem=value[K|M|G|T]  | --mem=360G  | Request 360 GB per node  | No
+Memory Per CPU ^{【26†2】}  | --mempercpu=value[K|M|G|T]  | --mem=8292M  | Request 8,292 MB per CPU  | No
+Combined stdout/stderr  | --output=[OutputName].%j  | --output=myJobOut.%j  | Collect stdout/err in myJobOut.[JobID]  | No
+## Examples【27†​】
+
+  * Job request for 1 node, 1 CPU, 1 GPU, and 10 minutes of runtime.
+Create a script called job_hello_world.job:
+
+    `#!/bin/bash
+    #SBATCH --job-name=hello_world
+    #SBATCH --nodes=1
+    #SBATCH --ntasks=1
+    #SBATCH --output=hello_%j.out
+    #SBATCH --error=hello_%j.err
+    #SBATCH --time=00:10:00
+    #SBATCH --qos=standard
+    #SBATCH --gres=gpu:1
+    srun sh -c 'echo "hello world ($(hostname)) ($XDG_RUNTIME_DIR) ($XDG_SESSION_ID) ($XDG_SESSION_TYPE) ($XDG_SESSION_CLASS)" | tee /scratch/user/$USER/hello_world_$(hostname)'
+    `
+Run the job with:
+
+    `sbatch ./job_hello_world.job
+    `
+
+  * Job request for 100 GPUs, 150 GBs of RAM per node, 500 CPUs and 30 hours of runtime. There will be 500 instances of the srun command, each with 1 CPU.
+Create a script called job_hello_world.job:
+
+    `#!/bin/bash
+    #SBATCH --job-name=hello_world
+    #SBATCH --gpus=100
+    #SBATCH --mem=150G
+    #SBATCH --ntasks=500
+    #SBATCH --output=hello_%j.out
+    #SBATCH --error=hello_%j.err
+    #SBATCH --time=30:00:00
+    #SBATCH --qos=standard
+    srun sh -c 'echo "hello world ($(hostname)) ($XDG_RUNTIME_DIR) ($XDG_SESSION_ID) ($XDG_SESSION_TYPE) ($XDG_SESSION_CLASS)" | tee /scratch/user/$USER/hello_world_$(hostname)'
+    `
+Run the job with:
+
+    `sbatch ./job_hello_world.job
+    `
+
+  * Job request for 100 GPUs, 150 GBs of RAM per node, 500 CPUs and 30 hours of runtime. There will be 500 instances of the srun command each with 4 CPUs.
+Create a script called job_hello_world.job:
+
+    `#!/bin/bash
+    #SBATCH --job-name=hello_world
+    #SBATCH --gpus=100
+    #SBATCH --mem=150G
+    #SBATCH --ntasks=500
+    #SBATCH --cpus-per-task=4
+    #SBATCH --output=hello_%j.out
+    #SBATCH --error=hello_%j.err
+    #SBATCH --time=30:00:00
+    #SBATCH --qos=standard
+    srun sh -c 'echo "hello world ($(hostname)) ($XDG_RUNTIME_DIR) ($XDG_SESSION_ID) ($XDG_SESSION_TYPE) ($XDG_SESSION_CLASS)" | tee /scratch/user/$USER/hello_world_$(hostname)'
+    `
+Run the job with:
+
+    `sbatch ./job_hello_world.job
+    `
+## Job Submission and Monitoring【28†​】
+
+The commands below are commonly used to submit and monitor jobs, as well as check resource usage.
+In the examples below, `>$` indicates your shell prompt.
+### SBATCH【29†​】
+
+Once you have a job script, submit the job to the compute nodes using the `sbatch` command:
+`>$ sbatch jobfile.sh`
+`Submitted batch job 123456`
+
+Notes:
+  * This is different than running the job with `./jobfile.sh` !
+    * Using `sbatch` sends your job to the compute nodes, where the resources are.
+    * Using `./` runs it locally, on the small login nodes, where it may not succeed.
+  * You can specify Slurm directives when you submit the job on the command line.
+    * This is an alternative to the `#SBATCH` lines in the job script itself.
+    * For example: `>$ sbatch --ntasks=1 jobfile.sh`
+  * The suffix of your job file can be anything; it does not have to be `.sh`. You might use `.sh` to indicate it's a shell script or something like `.slrm` to indicate it's intended to be a Slurm job.
+  * If the job is successfully submitted, sbatch will return a job ID (as in the example above) that you can use to track the job.
+### SQUEUE【30†​】
+
+To monitor your job once it's submitted, you can use the command `squeue --me` command to track it. This will return a list of your jobs with details about where they are running, time limits, etc.
+
+    `>$ squeue --me
+    JOBID   PARTITION  NAME     USER        ST  TIME   NODES   NODELIST(REASON)
+    123456     def     job_name user_name   R   1:34   1       dgx019
+    `
+(If you don't provide the `--me`, you will see information for all users' jobs, which is likely not what you need.)
+### SCANCEL【31†​】
+
+Should you need to cancel a job, you can pass the job ID to the `scancel` command:
+`>$ scancel 123456`
+Do this to free up resources if you realize you will not need the output of your job for whatever reason.
+### SACCT【32†​】
+Show job history, including job IDs, completion status, resources, etc. Defaults to information from only the current day, but you can specify start and end times with the `-S` and `-E` flags.
+
+    `>$ sacct -S 2026-03-01 -E 2026-04-01
+    JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
+    ------------ ---------- ---------- ---------- ---------- ---------- --------
+    87079        hello_wor+        def prj-02-vi+          2  COMPLETED      0:0
+    87079.batch       batch            prj-02-vi+          2  COMPLETED      0:0
+    87079.extern     extern            prj-02-vi+          2  COMPLETED      0:0
+    87079.0              sh            prj-02-vi+          2  COMPLETED      0:0
+    87158        hello_wor+        def prj-02-vi+          2  COMPLETED      0:0
+    87158.batch       batch            prj-02-vi+          2  COMPLETED      0:0
+    87158.extern     extern            prj-02-vi+          2  COMPLETED      0:0
+    87158.0              sh            prj-02-vi+          2  COMPLETED      0:0
+    `
+## Glossary【33†​】
+FairShare Scheduling:
+Scheduling priority is governed by a user’s FairShare score. The FairShare score is calculated by Slurm based on QoS levels, resources requested, time requested, past utilization, decay and other factors.
+Using the “high” QoS will initially give you a higher priority but will cause a faster decay of your FairShare score. This will have the effect of delaying the start of future jobs. It is generally recommended to use the “standard” QoS. However, if your job can wait a bit, use of the “low” and “scavenger” QoS will boost your FairShare score by slowing its decay. This will enable future jobs to be scheduled more quickly.
+Project: The basic unit of system allocation
+
+Slurm Account: There is a 1 to 1 correspondence between a VISION project and a Slurm account
+
+Slurm Association: Assignment to project
+
+  * All members of the project will be associated with the relevant Slurm account
+
+Slurm Quality of Service (QoS): The requested priority of a job submission
+## Links【34†​】
+
+  * 【35†https://slurm.schedmd.com/quickstart.html(opens in new window)†slurm.schedmd.com】 - Great quick start guide for Slurm
+  * 【36†https://slurm.schedmd.com/fair_tree.html(opens in new window)†slurm.schedmd.com】 - FairShare algorithm implementation
+  * 【37†https://slurm.schedmd.com/priority_multifactor.html(opens in new window)†slurm.schedmd.com】 - Multifactor Priority
+## Changelog【38†​】
+
+  * 2026-10-14 - Enable v4 of Slurm configuration - Update ledger system by resetting initial calculation date to October 14, 2026 and implement Tier system
+  * 2026-09-09 - Enable v3 of Slurm configuration - implement ledger system and adjust initial FairShare value for new users
+  * 2026-07-31 - Scheduler parameter values were changed
+  * 2026-07-24 - The max resources was changed from 720 GPUs to 240 GPUs
+  * 2026-04-21 - Enable v2 of Slurm configuration
+## Footnotes【39†​】
+
+  1. Default value is set to 14 CPU Cores per GPU - if not specified. 【40†↩】
+
+  2. Default value is set to 8,292M per CPU. 【41†↩】 【42†↩^{2}】
+
+【3†Previous Onboarding Instructions】【5†Next Using Globus】
+  * 【11†Slurm Configuration】
+  * 【12†Version: v4 - enabled 2026-10-14】
+  * 【13†Guiding principles】
+  * 【14†Current configuration】
+    * 【15†FairShare Scheduling】
+    * 【16†Ledger System】
+    * 【17†Project Tiers】
+    * 【21†Understanding how your FairShare value is calculated】
+    * 【22†QoS Recommendations】
+    * 【23†Key Limits】
+  * 【24†Slurm Submission Flags】
+  * 【27†Examples】
+  * 【28†Job Submission and Monitoring】
+    * 【29†SBATCH】
+    * 【30†SQUEUE】
+    * 【31†SCANCEL】
+    * 【32†SACCT】
+  * 【33†Glossary】
+  * 【34†Links】
+  * 【38†Changelog】
+Docs
+
+  * 【1†TAMUS VISION Supercomputer Documentation】
+  * 【10†Support】
+  * Feedback (feedback@vision.tamus.edu)
+
+Copyright © 2026 【43†Texas A&M University System†www.tamus.edu】

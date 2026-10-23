@@ -1,0 +1,4 @@
+interface:
+  display_name: "VISION HPC"
+  short_description: "Search VISION docs and prepare cluster job scripts"
+  default_prompt: "Use $vision-hpc to help me prepare a VISION job script using the official documentation."

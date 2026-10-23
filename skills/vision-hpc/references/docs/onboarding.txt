@@ -1,0 +1,167 @@
+Source: https://docs.vision.tamus.edu/onboarding/
+Retrieved: 2026-10-23
+Format: browser-extracted text; image contents are not included.
+
+【0†Skip to main content】
+
+  * 【1†Welcome to VISION Documentation】
+  * 【2†Architecture of the VISION supercomputer】
+  * 【3†Onboarding Instructions】
+  * 【4†Running Jobs】
+  * 【5†Using Globus】
+  * 【6†Hardware Specifications】
+  * 【7†Using Containers】
+  * 【8†Maintenance】
+  * 【9†IT Pros】
+
+  * 【10†Support】
+
+[Button: On this page]
+# Onboarding Instructions
+
+Basic onboarding instructions for the first set of researchers.
+
+note
+
+Please note that the onboarding procedure is evolving and the snapshots below may differ from what you see. Please reach out if you run into any issues.
+## Step 1: Accept VISION Invitation【11†​】
+
+You will receive an invitation email to set up your account on VISION:
+
+【12†Image: VISION invitation email】
+
+Click the link which will open a browser window, then click Log in With SSO:
+
+【13†Image: Log in with SSO screen】
+
+Select the correct Identity provider and login:
+
+【14†Image: Select identity provider】
+## Step 2: Email Verification【15†​】
+
+You will be redirected back to the VISION account setup page. Click Send Confirmation Code:
+
+【16†Image: Send confirmation code】
+
+Check your email to get the confirmation code:
+
+【17†Image: Email confirmation code】
+
+Navigate back to the VISION account setup page and fill in the confirmation code:
+
+【18†Image: Enter confirmation code】
+## Step 3: Create SSH Key【19†​】
+
+Click on Create a new SSH key:
+
+【20†Image: Create SSH key screen】
+
+The comment is optional but I would suggest adding "vision". Click Generate Key Pair:
+
+【21†Image: Generate key pair screen】
+
+Download the Private Key by clicking on the Download Private Key button. If your browser gives you the option while downloading, save the private key to `$HOME/.ssh/` directory. Otherwise, move the file to `$HOME/.ssh/` after downloading.
+You will need to confirm that your private key has 600 permissions:
+
+    `ls -l $HOME/.ssh/id_ed25519_vision
+    `
+
+Change the permissions if needed:
+
+    `chmod 600 $HOME/.ssh/id_ed25519_vision
+    `
+
+【22†Image: Download private key screen】
+## Step 4: Setup Duo Account【23†​】
+
+Click on Manage Devices:
+
+【20†Image: Manage devices screen】
+
+Click on Get started:
+
+【24†Image: Duo get started】
+
+Your options will differ depending on your current setup in DUO. Click Duo Mobile:
+
+【25†Image: Select Duo Mobile】
+
+Add your phone number:
+
+【26†Image: Add phone number】
+
+Confirm your number:
+
+【27†Image: Confirm phone number】
+
+Download the Duo Mobile app if you do not already have it. Click Next:
+
+【28†Image: Download Duo Mobile app】
+There will be a QR Code to finish the setup with your DUO app. Scan the QR code with the DUO app.
+
+After scanning, you will get an Added Duo Mobile confirmation screen. Click Continue:
+
+【29†Image: Duo Mobile added confirmation】
+## Step 5: Setup Cloudflare One【30†​】
+
+You will need to set up Cloudflare One on your device before you can login to VISION. Visit the link below and select the installer appropriate for your computer:
+
+【31†https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/(opens in new window)†developers.cloudflare.com】
+After installing Cloudflare One, you should see an icon available for a running service. The location will vary by operating system. The image below is from a Mac.
+
+Click `Continue` under Cloudflare One Client:
+
+【32†Image: Cloudflare One menu icon】
+
+Type `tamucs` in the `What is your team name?` field and click `Continue`:
+
+【33†Image: Cloudflare One accept】
+You will be directed to the Cloudflare One Login App in your default browser. Select the appropriate Institution. Your page may differ in options than the snapshot below:
+
+【34†Image: One login select institution】
+
+After logging in, you should see a Success! page. If you do not see the Zero Trust window, click the Cloudflare One in your menu bar. Click the `Connect` button to establish your connection:
+
+【35†Image: Cloudflare One connect】
+
+You should now see Connected in the Cloudflare One client window:
+【36†Image: Cloudflare One connected】
+## Step 6: Configure SSH【37†​】
+
+Setup the config file to ssh to VISION. Personalized instructions are available by clicking View Instructions on the 【38†account.vision.tamus.edu(opens in new window)†account.vision.tamus.edu】 page:
+
+【39†Image: View Instructions button】
+
+note
+The primary address for connecting to a VISION login node is `login.vision.tamus.edu`. Using this will connect you to one of two login nodes. If, for some reason, you need to connect to a specific login node, those addresses are `slogin-01.login.vision.tamus.edu` and `slogin-02.login.vision.tamus.edu`.
+If it doesn't already exist, create a text file named `config` in `$HOME/.ssh/config` with the following content. You will need to replace `id_institution` with your username as shown on the VISION account activation page:
+
+    `Host vision
+        Hostname  login.vision.tamus.edu
+        User  id_institution
+        IdentityFile  ~/.ssh/id_ed25519_vision
+        Port  22
+    `
+## Step 7: Connect to VISION【40†​】
+
+You should now be able to ssh to VISION using:
+
+    `ssh vision
+    `
+
+【2†Previous Architecture of the VISION supercomputer】【4†Next Running Jobs】
+
+  * 【11†Step 1: Accept VISION Invitation】
+  * 【15†Step 2: Email Verification】
+  * 【19†Step 3: Create SSH Key】
+  * 【23†Step 4: Setup Duo Account】
+  * 【30†Step 5: Setup Cloudflare One】
+  * 【37†Step 6: Configure SSH】
+  * 【40†Step 7: Connect to VISION】
+
+Docs
+  * 【1†TAMUS VISION Supercomputer Documentation】
+  * 【10†Support】
+  * Feedback (feedback@vision.tamus.edu)
+
+Copyright © 2026 【41†Texas A&M University System†www.tamus.edu】

@@ -1,0 +1,208 @@
+Source: https://docs.vision.tamus.edu/maintenance/
+Retrieved: 2026-10-23
+Format: browser-extracted text; image contents are not included.
+
+【0†Skip to main content】
+
+  * 【1†Welcome to VISION Documentation】
+  * 【2†Architecture of the VISION supercomputer】
+  * 【3†Onboarding Instructions】
+  * 【4†Running Jobs】
+  * 【5†Using Globus】
+  * 【6†Hardware Specifications】
+  * 【7†Using Containers】
+  * 【8†Maintenance】
+  * 【9†IT Pros】
+
+  * 【10†Support】
+
+[Button: On this page]
+
+# Maintenance
+## Maintenance Policy【11†​】
+
+To ensure optimal performance and reliability, Vision Supercomputer undergoes regular scheduled maintenance. A recurring maintenance window is held on the second Tuesday of each month, beginning at 9:00 AM CT and extending no later than 11:59 PM CT on Wednesday.
+Users will receive advance notification of each upcoming maintenance window, including any expected impacts, on the first Friday of the month. System access may be suspended for the duration of the maintenance period and will be restored once work is complete. The scope and duration of each window are reviewed in advance and adjusted as needed to minimize disruption.
+## VISION Supercomputer Scheduled Maintenance Complete - October 14, 2026【12†​】
+
+The scheduled maintenance for the VISION supercomputer has been completed, and system access has been restored as of Wednesday, October 14, 2026
+
+## VISION Supercomputer Scheduled Maintenance - October 13-14, 2026【13†​】
+
+Status: The VISION supercomputer will be unavailable for regularly scheduled maintenance from Tuesday, October 13 at 9:00 AM CT through Wednesday, October 14 at 11:59 PM CT
+## VISION Supercomputer Scheduled Maintenance Complete - September 9, 2026【14†​】
+
+The scheduled maintenance for the VISION supercomputer has been completed, and system access has been restored as of Wednesday, September 9, 2026 at 5:45 PM CT
+
+## VISION Supercomputer Scheduled Maintenance - September 8-9, 2026【15†​】
+
+Status: The VISION supercomputer will be unavailable for regularly scheduled maintenance from Tuesday, September 8 at 9:30 AM CT through Wednesday, September 9 at 11:59 PM CT
+## VISION Supercomputer Maintenance Complete - August 13, 2026【16†​】
+
+The scheduled maintenance for the VISION supercomputer has been completed, and system access has been restored as of Thursday, August 13, 2026 at 5:00 PM CT.
+
+The following work was completed during the maintenance window:
+  * Security Updates: Applied system updates to address known security issues
+  * Software Updates: Updated the software build system to support future software deployments
+  * System Optimization: Implemented configuration changes to optimize various system components
+
+Users may now resume normal access and job submission activities.
+
+Any questions or issues should be directed to help@vision.tamus.edu.
+## VISION Supercomputer Scheduled Maintenance - August 11 - 13, 2026【17†​】
+
+Status: The VISION supercomputer will be unavailable for regularly scheduled maintenance from Tuesday, August 11 at 9:30 AM CT through Thursday, August 13 at 11:59 PM CT
+### Planned Work【18†​】
+
+  * Security updates: System updates to address security issues
+  * Software updates: Update software build system to support future software deployments
+  * System Optimization: Configuration changes to optimize various system components
+
+Access will be disabled for the duration of the maintenance window and restored once work is complete.
+
+Any questions should be directed to help@vision.tamus.edu.
+## VISION Update: System Access Restored - July 21, 2026【19†​】
+
+The VISION system is now open for use. Our team has worked closely with the storage vendor to address the recent infrastructure issues, and we are confident the risk to user workloads and data is low. Users may resume submitting and running jobs.
+The system remains under active monitoring. A vendor-provided software update is expected later this week to fully resolve the underlying issue. If maintenance is required that could affect running workloads, we will notify users in advance.
+Additionally, we are monitoring a thermal issue affecting a small number of the 90 VISION nodes. A few nodes have recently shut down due to overheating. We are actively investigating, but users should be aware that some computational jobs could be impacted if this continues.
+
+New beta user onboarding will remain paused until the issue is fully resolved. Training activities will continue as scheduled.
+
+Any questions should be directed to help@vision.tamus.edu.
+
+Best regards, VISION Team
+## VISION Update: System Remains Unavailable - July 20, 2026【20†​】
+
+The VISION system remains unavailable as the team continues to work with DDN (fast scratch storage vendor) to resolve issues identified following a vendor-performed storage upgrade last week. The vendor is preparing a software fix that we anticipate will resolve the issues.
+
+Login nodes remain closed to user access. We will continue to provide updates as the situation develops.
+
+Any questions should be directed to help@vision.tamus.edu.
+Thank you for your continued patience.
+
+Best regards,
+
+VISION Team
+## VISION Update: System Remains Unavailable - July 17, 2026【21†​】
+
+The VISION system remains unavailable as the team continues to work with DDN (fast scratch storage vendor) to resolve issues identified following a vendor-performed storage upgrade earlier this week. During ongoing investigation and testing today, additional issues were identified, including client connectivity problems and hardware faults that are being addressed.
+Login nodes remain closed to user access. We are targeting Monday, July 20 at noon but will provide another update as the situation develops.
+
+Any questions should be directed to help@vision.tamus.edu.
+
+Thank you for your continued patience.
+## VISION Supercomputer Maintenance Continued - Storage Issue Impacting System Use - July 16, 2026【22†​】
+
+Following a successful upgrade to the DDN high-speed storage system, we identified an unexpected issue that is impacting normal use of the system. Directory operations (create, remove, rename) are taking approximately 2.5 minutes each to complete, which effectively blocks typical workflows. File reads and writes generally continue at expected throughput.
+The maintenance window is being extended as we work with the DDN vendor to resolve this issue. Users should not attempt to access the system until further notice.
+
+We will send an update when we have a clearer timeline for resolution.
+
+Any questions should be directed to help@vision.tamus.edu.
+
+Thank you for your patience.
+## VISION Supercomputer Scheduled Maintenance - July 14-15, 2026【23†​】
+
+Status: System Unavailable-----The VISION supercomputer is scheduled for regular maintenance from July 14 through July 15. VISION will be completely unavailable for the entire duration.
+### Planned Work【24†​】
+
+  * Security updates: System updates to address security issues
+  * Software updates: Update software build system to support future software deployments
+  * System optimization: Update various system configuration settings to optimize various components of the system
+
+## VISION Emergency Maintenance - May 29, 2026【25†​】
+
+The login nodes were briefly shut down for hardware maintenance. Preexisting workloads continued to run. System access has been restored.
+## VISION Supercomputer Maintenance Complete - May 13, 2026【26†​】
+
+The scheduled maintenance for the VISION supercomputer has been completed, and system access has been restored as of Wednesday, May 13, 2026 at 5:00 PM CT.
+
+The following work was completed during the maintenance window:
+  * Security Updates: Applied system updates to address known security issues
+  * Software Updates: Updated the software build system to support future software deployments
+  * System Optimization: Implemented configuration changes to optimize various system components
+
+Users may now resume normal access and job submission activities.
+
+Any questions or issues should be directed to help@vision.tamus.edu.
+## VISION Supercomputer Scheduled Maintenance - May 12-13, 2026【27†​】
+
+Status: System Unavailable-----The VISION supercomputer is scheduled for regular maintenance from May 12 through May 13. VISION will be completely unavailable for the entire duration.
+### Planned Work【28†​】
+
+  * Security updates: System updates to address security issues
+  * Software updates: Update software build system to support future software deployments
+  * System optimization: Update various system configuration settings to optimize various components of the system
+## VISION System Back Online (4-23-2026)【29†​】
+
+Subject: VISION Supercomputer Back Online
+
+This email is being sent to current VISION customers.
+
+The VISION supercomputer is back online following the extended maintenance window.
+
+During this period, several important updates were completed to improve system reliability, consistency, and day-to-day usability:
+  * Infrastructure Alignment: Coordinated updates across networking, storage, and compute systems to better align the platform with its reference architecture
+  * GPU Compute Nodes: Firmware and driver updates to reduce configuration inconsistencies
+  * Lustre Storage: Improvements to fast scratch storage to provide more consistent performance across the system
+  * Scheduling & Storage Components: Updates to support more stable and predictable system behavior
+  * Operational Improvements: Additional documentation and automation to help make future maintenance faster and less disruptive
+You may notice more consistent behavior and improved stability as a result of these changes. Additional refinements will continue as part of normal beta-phase operations.
+
+Any questions should be directed to help@vision.tamus.edu .
+
+Thank you for your patience during the maintenance period and for your continued participation and feedback.
+## Extended Maintenance【30†​】
+
+Update: VISION Supercomputer Maintenance Extension
+
+Critical VISION maintenance activities are ongoing and now expected to be completed by end of day Wednesday, April 22, extending beyond the original Monday, April 20 target.
+
+Our team is working hard to complete all necessary updates. We will provide additional clarification on changes to the maintenance window as more information becomes available.
+Any questions regarding this extension should be directed to help@vision.tamus.edu.
+
+Thank you for your continued collaboration and patience.
+## VISION Supercomputer Scheduled Maintenance - April 14-20, 2026【31†​】
+
+VISION Unavailable April 14-20, 2026 for System Maintenance
+
+Status: System Unavailable-----The VISION supercomputer is scheduled for a critical, full-system maintenance and update period from April 14 through April 20. VISION will be completely unavailable for the entire duration.
+
+This maintenance is intended to reduce future disruptions, improve system consistency, and establish a more predictable maintenance schedule.
+### Planned Work:【32†​】
+  * Infrastructure: * Storage and infrastructure maintenance, including hardware remediation, to support improved performance and resiliency.
+  * Access Controls: File system and permissions configuration updates (such as finalized changes to NFS configuration and home directory permissions) to enforce consistent access controls.
+  * System Utilization: Scheduling and workload management configuration changes, including updates to Slurm project-based/group-based scheduling and converting Slurm partitions to QoS intended to improve fairness and overall system utilization.
+  * Redundancy: Networking-related updates, coordinated with storage changes, aimed at improving redundancy and enabling future maintenance activities.
+  * Operational Readiness: Monitoring and logging updates to support improved system health visibility and operational notifications.
+【7†Previous Using Containers】【9†Next IT Pros】
+  * 【11†Maintenance Policy】
+  * 【12†VISION Supercomputer Scheduled Maintenance Complete - October 14, 2026】
+  * 【13†VISION Supercomputer Scheduled Maintenance - October 13-14, 2026】
+  * 【14†VISION Supercomputer Scheduled Maintenance Complete - September 9, 2026】
+  * 【15†VISION Supercomputer Scheduled Maintenance - September 8-9, 2026】
+  * 【16†VISION Supercomputer Maintenance Complete - August 13, 2026】
+  * 【17†VISION Supercomputer Scheduled Maintenance - August 11 - 13, 2026】
+    * 【18†Planned Work】
+  * 【19†VISION Update: System Access Restored - July 21, 2026】
+  * 【20†VISION Update: System Remains Unavailable - July 20, 2026】
+  * 【21†VISION Update: System Remains Unavailable - July 17, 2026】
+  * 【22†VISION Supercomputer Maintenance Continued - Storage Issue Impacting System Use - July 16, 2026】
+  * 【23†VISION Supercomputer Scheduled Maintenance - July 14-15, 2026】
+    * 【24†Planned Work】
+  * 【25†VISION Emergency Maintenance - May 29, 2026】
+  * 【26†VISION Supercomputer Maintenance Complete - May 13, 2026】
+  * 【27†VISION Supercomputer Scheduled Maintenance - May 12-13, 2026】
+    * 【28†Planned Work】
+  * 【29†VISION System Back Online (4-23-2026)】
+  * 【30†Extended Maintenance】
+  * 【31†VISION Supercomputer Scheduled Maintenance - April 14-20, 2026】
+    * 【32†Planned Work:】
+Docs
+
+  * 【1†TAMUS VISION Supercomputer Documentation】
+  * 【10†Support】
+  * Feedback (feedback@vision.tamus.edu)
+
+Copyright © 2026 【33†Texas A&M University System†www.tamus.edu】
