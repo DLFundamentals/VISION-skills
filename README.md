@@ -4,7 +4,7 @@ Reusable Codex skills for working with the [TAMUS VISION supercomputer](https://
 
 The `vision-hpc` skill searches official documentation, cites its sources, helps prepare Slurm and Pyxis job scripts, and supports troubleshooting cluster access, scheduling, containers, storage, and job failures.
 
-This is a community-maintained project, not an official TAMUS support service. The [official VISION documentation](https://docs.vision.tamus.edu/) remains the authority for cluster policy and configuration.
+The [official VISION documentation](https://docs.vision.tamus.edu/) remains the authority for cluster policy and configuration.
 
 ## Install
 
@@ -84,16 +84,6 @@ Search is case-insensitive; all query terms must occur on the same line. Read su
 Refresh follows same-origin HTML links from the official homepage and replaces the existing corpus only after every discovered page succeeds. It excludes external sites, images, downloads, and query URLs. A successful refresh also writes `references/docs/manifest.json` recording coverage and timestamps. A failed download preserves the previous cache. The default limit is 150 pages; use `refresh --max-pages NUMBER` if the site grows beyond that limit.
 
 The initial snapshot covers ten pages linked in the homepage navigation and was retrieved on October 23, 2026. Text extraction excludes image contents and may omit formatting or other page details. It is not a complete archive of unlinked or authenticated material. Check live official pages for current scheduler limits, QoS policy, maintenance, supported software, and container tags.
-
-## Updates and contributions
-
-Updating the skill and refreshing its documentation are separate operations:
-
-- With the symlink setup, use `git pull` in your repository checkout to update the installed skill directly. Restart Codex if changes are not detected.
-- With a separate installed copy, updating the checkout does not update the installation; review and update the installed copy as well.
-- Run the refresh command to update documentation. With the symlink setup, this modifies the checkout's cached files and may produce Git changes. A separate installed copy has its own cache.
-
-Contributions through issues and pull requests are welcome. Include the relevant official documentation URL when proposing changes to cluster-specific guidance. Keep credentials, private keys, and personal job data out of contributions.
 
 ## License and documentation attribution
 
