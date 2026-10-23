@@ -8,22 +8,29 @@ This is a community-maintained project, not an official TAMUS support service. T
 
 ## Install
 
-In Codex, ask:
+Clone this repository and link the skill into Codex's personal skills directory, `~/.agents/skills`. Run these commands in your terminal:
+
+```bash
+git clone https://github.com/DLFundamentals/VISION-skills.git
+mkdir -p "$HOME/.agents/skills"
+ln -s "$PWD/VISION-skills/skills/vision-hpc" "$HOME/.agents/skills/vision-hpc"
+```
+
+If you already cloned the repository, run only the `mkdir` and `ln` commands from its parent directory, or substitute the absolute path to your checkout in the `ln` command. Keep the checkout in place: the link points to it.
+
+These commands assume `~/.agents/skills/vision-hpc` does not already exist. Inspect an existing installation before replacing it.
+
+Restart Codex if the skill does not appear, then type `$vision-hpc` or open `/skills` to select it. The required layout is `~/.agents/skills/vision-hpc/SKILL.md`; placing the folder directly inside `~/.agents` does not install it. See the [official skill discovery guidance](https://learn.chatgpt.com/docs/build-skills).
+
+Alternatively, ask Codex to install from GitHub:
 
 ```text
 Use $skill-installer to install vision-hpc from
 https://github.com/DLFundamentals/VISION-skills/tree/main/skills/vision-hpc
+into ~/.agents/skills.
 ```
 
-Alternatively, clone this repository and copy the skill into your personal skills directory:
-
-```bash
-git clone https://github.com/DLFundamentals/VISION-skills.git
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-cp -R VISION-skills/skills/vision-hpc "${CODEX_HOME:-$HOME/.codex}/skills/"
-```
-
-These commands assume `vision-hpc` is not already installed. For an existing installation, review and replace or merge the installed folder deliberately. If the skill does not appear immediately, start a new Codex session.
+The installer creates a separate copy. Use either the linked checkout or the installer approach to avoid duplicate installations.
 
 ## Requirements
 
@@ -68,8 +75,8 @@ python3 skills/vision-hpc/scripts/docs.py refresh
 For an installed copy:
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/vision-hpc/scripts/docs.py" search 'fairshare'
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/vision-hpc/scripts/docs.py" refresh
+python3 "$HOME/.agents/skills/vision-hpc/scripts/docs.py" search 'fairshare'
+python3 "$HOME/.agents/skills/vision-hpc/scripts/docs.py" refresh
 ```
 
 Search is case-insensitive; all query terms must occur on the same line. Read surrounding sections before relying on a match. Each cached page records its source URL and retrieval date.
@@ -82,8 +89,9 @@ The initial snapshot covers ten pages linked in the homepage navigation and was 
 
 Updating the skill and refreshing its documentation are separate operations:
 
-- Use `git pull` in your repository checkout to obtain changes to instructions and scripts, then update your installed copy. An installed copy does not automatically track the checkout.
-- Run the refresh command to update documentation in whichever copy you invoke. Refreshing the checkout does not refresh a separate installed copy.
+- With the symlink setup, use `git pull` in your repository checkout to update the installed skill directly. Restart Codex if changes are not detected.
+- With a separate installed copy, updating the checkout does not update the installation; review and update the installed copy as well.
+- Run the refresh command to update documentation. With the symlink setup, this modifies the checkout's cached files and may produce Git changes. A separate installed copy has its own cache.
 
 Contributions through issues and pull requests are welcome. Include the relevant official documentation URL when proposing changes to cluster-specific guidance. Keep credentials, private keys, and personal job data out of contributions.
 
